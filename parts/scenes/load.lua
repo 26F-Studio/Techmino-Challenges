@@ -133,9 +133,11 @@ function scene.mouseDown()
     if LOADED then
         if FIRSTLAUNCH then
             SCN.push('main')
+            SCN.push('challenges')
             SCN.swapTo('lang')
         else
-            SCN.swapTo(SETTING.simpMode and'main_simple'or'main')
+            SCN.push(SETTING.simpMode and'main_simple'or'main')
+            SCN.swapTo('challenges')
         end
     end
 end

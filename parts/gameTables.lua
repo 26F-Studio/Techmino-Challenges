@@ -20,6 +20,7 @@ RANK_COLORS={
     {1,.5,.4},
     {.95,.5,.95},
 }
+CHALLENGE=0
 do--SVG_TITLE_FILL, SVG_TITLE_LINE
     SVG_TITLE_FILL={
         {
