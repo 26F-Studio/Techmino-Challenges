@@ -782,6 +782,7 @@ return{
     challengeUnapplied="No challenges applied.",
     challengeSwitched="Switched to challenge $1.",
     currentChallenge="Active",
+    challengeNoImport="No importing progress for challenges.",
     cTexts={
         -- Challenge-specific texts
 

@@ -28,6 +28,7 @@ scene.widgetList={
     WIDGET.newText{name='import',     x=55,y=265,color='lR',align='L',font=50},
     WIDGET.newButton{name='unlock',   x=190,y=390,w=280,h=100,color='lR',
         code=function()
+            if CHALLENGE~=0 then MES.new('error',text.challengeNoImport) return end
             local D=_parseCB()
             if D then
                 TABLE.cover(D,RANKS)

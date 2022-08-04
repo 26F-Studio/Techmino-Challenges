@@ -782,12 +782,10 @@ return{
     challengeUnapplied="--",
     challengeSwitched="-->C$1",
     currentChallenge="—→",
+    challengeNoImport="[CHAL] X",
     cTexts={
         -- Challenge-specific texts
-        
-        -- Shared
-        ['chal']="Challenges",
-        
+
         -- [C1/8/9]
         ['resetRun']="RESET",
         ['confirmReset3']="3?",
