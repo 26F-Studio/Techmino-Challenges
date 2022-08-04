@@ -144,7 +144,7 @@ function scene.keyDown(key,isRep)
                 MES.new('info',text.cTexts['alreadyAttempted_'..CHALLENGE])
             else
                 mapCam.keyCtrl=false
-                if CHALLENGE==1 or CHALLENGE==8 or CHALLENGE==9 then 
+                if CHALLENGE==1 or CHALLENGE==8 or CHALLENGE==9 then
                     RANKS[mapCam.sel]=-1
                     saveProgress()
                 end

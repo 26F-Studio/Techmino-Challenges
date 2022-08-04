@@ -803,6 +803,7 @@ local commands={}do
     commands.unlockall={
         code=function(bool)
             if bool=="sure"then
+                if CHALLENGE~=0 then log{C.R,"No cheating in challenges!"} return end
                 for name,M in next,MODES do
                     if type(name)=='string'and not RANKS[name]and M.x then
                         if M.x then
@@ -828,6 +829,22 @@ local commands={}do
     commands.play={
         code=function(m)
             if MODES[m]then
+                if CHALLENGE~=0 then
+                    local visibleModes={}
+                    for name,M in next,MODES do
+                        if RANKS[name]and M.x then
+                            visibleModes[name]=1
+                            if M.unlock then
+                                for i=1,#M.unlock do
+                                    visibleModes[M.unlock[i]]=visibleModes[M.unlock[i]]or 2
+                                end
+                            end
+                        end
+                    end
+                    if visibleModes[m]~=1 then log{C.R,"[CHALLENGE "..CHALLENGE.."] "..m.." is locked"} return
+                    elseif RANKS[m]~=0 and (CHALLENGE==1 or CHALLENGE==8 or CHALLENGE==9) then log{C.R,"[CHALLENGE "..CHALLENGE.."] "..m.." has already been attempted"} return
+                    end
+                end
                 loadGame(m,true)
             elseif m~=""then
                 log{C.R,"No mode called "..m}
