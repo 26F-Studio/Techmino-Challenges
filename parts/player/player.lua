@@ -729,6 +729,10 @@ function Player:garbageRise(color,amount,line)--Release n-lines garbage to field
             #self.field>self.gameEnv.heightLimit
         )
     then
+        if CHALLENGE==5 then 
+            self:clearFilledLines(1,#self.field)
+            if not self:ifoverlap(self.cur.bk,self.curX,self.curY) then return end
+        end
         self:lose()
     end
 end
@@ -1101,10 +1105,14 @@ end
 function Player:_checkSuffocate()
     if
         self:ifoverlap(self.cur.bk,self.curX,self.curY)and(
-            not self:_triggerEvent('hook_die')or
+            not self:_triggerEvent('hook_die') or
             self:ifoverlap(self.cur.bk,self.curX,self.curY)
         )
     then
+        if CHALLENGE==5 then 
+            self:clearFilledLines(1,#self.field)
+            if not self:ifoverlap(self.cur.bk,self.curX,self.curY) then return end
+        end
         self:lock()
         self:lose()
     end
@@ -2343,6 +2351,8 @@ end
 local mdTimer
 local function update_alive(P,dt)
     local ENV=P.gameEnv
+
+    if CHALLENGE==5 and not P.bot then ENV.fillClear=false end
 
     P.frameRun=P.frameRun+1
     if P.frameRun<=180 then
