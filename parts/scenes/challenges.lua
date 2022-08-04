@@ -35,7 +35,18 @@ local listBox=WIDGET.newListBox{name='list',x=50,y=50,w=1200,h=520,lineH=40,draw
 end}
 
 local function ReloadData()
-    -- load most stuff
+    -- make directories
+    for _,v in next,{'conf','record','replay','cache','lib'}do
+        local info=fs.getInfo(v)
+        if not info then
+            fs.createDirectory(v)
+        elseif info.type~='directory'then
+            fs.remove(v)
+            fs.createDirectory(v)
+        end
+    end
+
+    -- load unlocks
     if not 
         pcall(TABLE.cover, loadFile('conf/unlock',    '-json -canSkip')or loadFile('conf/unlock',    '-luaon -canSkip')or{},RANKS)
     then

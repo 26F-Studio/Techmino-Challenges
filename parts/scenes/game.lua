@@ -20,7 +20,7 @@ local repRateStrings={[0]="pause",[.125]="0.125x",[.5]="0.5x",[1]="1x",[2]="2x",
 local scene={}
 
 local function _updateMenuButtons()
-    WIDGET.active.restart.hide=replaying
+    WIDGET.active.restart.hide=replaying or CHALLENGE==1 or CHALLENGE==8 or CHALLENGE==9
 
     local pos=(GAME.tasUsed or replaying)and'right'or SETTING.menuPos
     modeTextWidK=math.min(280/TEXTOBJ.modeName:getWidth(),1)
@@ -113,6 +113,7 @@ end
 local function _step()trigGameRate=trigGameRate+1 end
 
 local function _restart()
+    if CHALLENGE==1 or CHALLENGE==8 or CHALLENGE==9 then return end
     resetGameData(PLAYERS[1].frameRun<240 and'q')
     noKey=replaying
     noTouch=replaying
