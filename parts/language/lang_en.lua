@@ -328,7 +328,9 @@ return{
         main={
             offline="Single Player",
             qplay="Last Played: ",
+            reset="Reset Progress",
             online="Multiplayer",
+            chal="Challenges",
             custom="Custom Game",
             setting="Settings",
             stat="Statistics",
@@ -346,6 +348,7 @@ return{
         mod={
             title="Mods",
             reset="Reset (tab)",
+            chal="Challenges (V)",
             unranked="Unranked",
         },
         pause={
@@ -762,6 +765,7 @@ return{
         },
     },
     challenges={
+    [0]={"No Challenge", "Normal Techmino",        "You can choose a challenge in the Mods menu."},
         {"Challenge 1",  "One Try",                "You can only attempt modes once. Make it count!",},
         {"Challenge 2",  "No Hold",                "The classic No Hold challenge!"},
         {"Challenge 3",  "Misdrop Mania",          "Whoops!"},
@@ -775,10 +779,25 @@ return{
         {"Challenge 11", "Unlucky",                "Drought+ randomizer."},
     },
     challengeApplied="Challenge $1 applied.",
+    challengeUnapplied="No challenges applied.",
+    challengeSwitched="Switched to challenge $1.",
+    currentChallenge="Active",
     cTexts={
-        -- Challenge specific texts
-        ['resetRun']="RESET",
+        -- Challenge-specific texts
+
+        -- [C1/8/9]
+        ['confirmReset3']="Press 3 more times to confirm.",
+        ['confirmReset2']="Press 2 more times to confirm.",
+        ['confirmReset1']="Press 1 more time to confirm.",
+        ['progressReset']="Your progress has been reset.",
+        ['alreadyAttempted_1']="[C1] Mode already attempted",
+
+        -- [C8]
+        ['alreadyAttempted_8']="[C8] Mode already attempted",
         ['unlock_S']="Achieve Rank S or above in the preceding modes to unlock",
+
+        -- [C9]
+        ['alreadyAttempted_9']="[C9] Mode already attempted",
         ['unlock_U']="Achieve Rank U or above in the preceding modes to unlock",
     },
     modes={

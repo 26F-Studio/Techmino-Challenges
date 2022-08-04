@@ -329,7 +329,9 @@ return{
         main={
             offline="单机游戏",
             qplay="快速开始: ",
+            reset="RESET",
             online="联网游戏",
+            chal="CHAL",
             custom="自定义",
             setting="设置",
             stat="统计信息",
@@ -347,6 +349,7 @@ return{
         mod={
             title="Mods",
             reset="重置(tab)",
+            chal="CHAL (V)",
             unranked="成绩无效",
         },
         pause={
@@ -762,6 +765,7 @@ return{
         },
     },
     challenges={
+    [0]={"--",  "",            "You can choose a challenge in the Mods menu."},
         {"C1",  "description", "detailed description"},
         {"C2",  "description", "detailed description"},
         {"C3",  "description", "detailed description"},
@@ -775,10 +779,29 @@ return{
         {"C11", "description", "detailed description"},
     },
     challengeApplied="C$1",
+    challengeUnapplied="--",
+    challengeSwitched="-->C$1",
+    currentChallenge="—→",
     cTexts={
-        -- challenge-specific texts
+        -- Challenge-specific texts
+        
+        -- Shared
+        ['chal']="Challenges",
+        
+        -- [C1/8/9]
         ['resetRun']="RESET",
+        ['confirmReset3']="3?",
+        ['confirmReset2']="2?",
+        ['confirmReset1']="1?",
+        ['progressReset']="RESET",
+        ['alreadyAttempted_1']="[C1] 1x",
+
+        -- [C8]
+        ['alreadyAttempted_8']="[C8] 1x",
         ['unlock_S']="前一模式达到成绩S或以上即可解锁",
+
+        -- [C9]
+        ['alreadyAttempted_9']="[C9] 1x",
         ['unlock_U']="前一模式达到成绩U或以上即可解锁",
     },
     modes={

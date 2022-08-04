@@ -138,6 +138,8 @@ function scene.keyDown(key,isRep)
         if mapCam.sel then
             if visibleModes[mapCam.sel]==2 then
                 MES.new('info',text.unlockHint)
+            elseif RANKS[mapCam.sel]~=0 and (CHALLENGE==1 or CHALLENGE==8 or CHALLENGE==9) then
+                MES.new('info',text.cTexts['alreadyAttempted_'..CHALLENGE])
             else
                 mapCam.keyCtrl=false
                 loadGame(mapCam.sel)

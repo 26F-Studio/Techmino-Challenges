@@ -19,6 +19,27 @@ local enterConsole=coroutine.wrap(function()
         Snd('bell',.6,'A4',.7,'A5',1,'A6')SFX.play('ren_mega')SCN.go('app_console')YIELD()
     end
 end)
+local resetUnlocks=coroutine.wrap(function()
+    while true do
+        Snd('bell',.6,'A4',.7,'E5',1,MATH.coin('A5','B5'))
+        MES.new('warn',text.cTexts.confirmReset3)
+        YIELD()
+
+        Snd('bell',.6,'A4',.7,'F5',1,MATH.coin('C6','D6'))
+        MES.new('warn',text.cTexts.confirmReset2)
+        YIELD()
+
+        Snd('bell',.6,'A4',.7,'G5',1,MATH.coin('E6','G6'))
+        MES.new('warn',text.cTexts.confirmReset1)
+        YIELD()
+
+        Snd('bell',.6,'A4',.7,'A5',1,'A6')SFX.play('ren_mega')
+        love.filesystem.remove('conf/unlock')
+        RANKS={sprint_10l=0}
+        MES.new('warn',text.cTexts.progressReset)
+        YIELD()
+    end
+end)
 function scene.sceneInit()
     BG.set()
 
@@ -39,7 +60,8 @@ end
 
 function scene.resize()
     local qpModeName=text.modes[STAT.lastPlay]and text.modes[STAT.lastPlay][1]or"["..STAT.lastPlay.."]"
-    scene.widgetList[2]:setObject(text.WidgetText.main.qplay..qpModeName)
+    scene.widgetList[2]:setObject((CHALLENGE==1 or CHALLENGE==8 or CHALLENGE==9) and text.WidgetText.main.reset or text.WidgetText.main.qplay..qpModeName)
+    scene.widgetList[3]:setObject(CHALLENGE~=0 and text.WidgetText.main.chal or text.WidgetText.main.online)
 end
 
 function scene.mouseDown(x,y)
@@ -67,10 +89,15 @@ function scene.keyDown(key,isRep)
         end
     elseif key=='q'then
         if _testButton(2)then
+            if CHALLENGE==1 or CHALLENGE==8 or CHALLENGE==9 then resetUnlocks() return end
             loadGame(STAT.lastPlay,true)
         end
     elseif key=='a'then
         if _testButton(3)then
+            if CHALLENGE~=0 then 
+                SCN.go('challenges')
+                return
+            end
             if WS.status('app')=='running'then
                 NET.tryLogin(false)
             elseif WS.status('app')=='dead'then
@@ -148,7 +175,7 @@ function scene.draw()
     --Version
     setFont(20)
     gc.setColor(.6,.6,.6)
-    mStr(verName,640,110)
+    mStr((CHALLENGE==0 and "" or "[C"..CHALLENGE.."] ")..verName,640,110)
 
     --Title
     gc.setColor(1,1,1)
@@ -187,8 +214,8 @@ end
 
 scene.widgetList={
     WIDGET.newButton{name='offline',x=-1200,y=210,w=800,h=100,color='lR',font=45,align='R',edge=30,code=pressKey'1'},
-    WIDGET.newButton{name='qplay',  x=-1200,y=330,w=800,h=100,color='lM',font=40,align='R',edge=30,code=pressKey'q'},
-    WIDGET.newButton{name='online', x=-1200,y=450,w=800,h=100,color='lV',font=45,align='R',edge=30,code=pressKey'a'},
+    WIDGET.newButton{name=(CHALLENGE==1 or CHALLENGE==8 or CHALLENGE==9) and 'reset' or 'qplay',  x=-1200,y=330,w=800,h=100,color='lM',font=40,align='R',edge=30,code=pressKey'q'},
+    WIDGET.newButton{name=CHALLENGE~=0 and 'chal' or 'online', x=-1200,y=450,w=800,h=100,color='lV',font=45,align='R',edge=30,code=pressKey'a'},
     WIDGET.newButton{name='custom', x=-1200,y=570,w=800,h=100,color='lS',font=45,align='R',edge=30,code=pressKey'z'},
 
     WIDGET.newButton{name='setting',x=2480,y=210,w=800,h=100, color='lO',font=40,align='L',edge=30,code=pressKey'-'},

@@ -6,6 +6,7 @@ local gc_print,gc_printf=gc.print,gc.printf
 local kb=love.keyboard
 local setFont=FONT.set
 local fs=love.filesystem
+local initIdentity=fs.getIdentity()
 
 local listBox=WIDGET.newListBox{name='list',x=50,y=50,w=1200,h=520,lineH=40,drawF=function(chal,id,ifSel)
     if ifSel then
@@ -19,7 +20,14 @@ local listBox=WIDGET.newListBox{name='list',x=50,y=50,w=1200,h=520,lineH=40,draw
     gc_setColor(.9,.9,1)
     local chalName=text.challenges[chal]
     gc_print(chalName and chalName[2] or "[C"..chal.."]",310,0)
+
     setFont(20)
+    if CHALLENGE==chal then
+        gc_setColor(0,0,1,.15)
+        gc_rectangle('fill',0,0,1200,40)
+        gc_setColor(1,0,0)
+        gc_print(text.currentChallenge,6,6)
+    end
     gc_setColor(1,1,.8)
     gc_print(chalName and chalName[1],80,6)
     gc_setColor(COLOR.Z)
@@ -87,18 +95,24 @@ local scene={}
 function scene.sceneInit()
     BG.set()
     local chalList={}
-    for i=1,#text.challenges do chalList[i]=i end
+    for i=0,#text.challenges do chalList[i+1]=i end
     listBox:setList(chalList)
     local hide=listBox:getLen()==0
 end
 
 function scene.keyDown(key)
     if key=='return'then
+        local prevChal=CHALLENGE
         CHALLENGE=listBox:getSel()
         RANKS={sprint_10l=0}
-        fs.setIdentity("TechC"..CHALLENGE)
+        fs.setIdentity(CHALLENGE~=0 and "TechC"..CHALLENGE or initIdentity)
         ReloadData()
-        MES.new("info",text.challengeApplied:gsub("$1",CHALLENGE))
+        if prevChal==CHALLENGE then goto after_msg
+        elseif prevChal==0 then MES.new('info',text.challengeApplied:gsub("$1",CHALLENGE))
+        elseif CHALLENGE==0 then MES.new('info',text.challengeUnapplied)
+        else MES.new('info',text.challengeSwitched:gsub("$1",CHALLENGE))
+        end
+        ::after_msg::
         backScene()
     elseif key=='up'or key=='down'then listBox:arrowKey(key)
     else return true end
