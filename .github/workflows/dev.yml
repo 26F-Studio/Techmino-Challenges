@@ -2,9 +2,9 @@ name: Techmino Develop CI
 
 on:
   push:
-    branches: [main, ci*]
+    branches: [main, challenge*, wip-all-in-one]
   pull_request:
-    branches: [main]
+    branches: [main, challenge*, wip-all-in-one]
 env:
   CORE_LOVE_PACKAGE_PATH: ./core.love
   CORE_LOVE_ARTIFACT_NAME: core_love_package
