@@ -792,7 +792,10 @@ return{
         ['confirmReset1']="Press 1 more time to confirm.",
         ['progressReset']="Your progress has been reset.",
         ['alreadyAttempted_1']="[C1] Mode already attempted",
-
+        
+        -- [C3]
+        ['noReplays_3']="Replays are currently non-functional in Challenge 3.",
+        
         -- [C8]
         ['alreadyAttempted_8']="[C8] Mode already attempted",
         ['unlock_S']="Achieve Rank S or above in the preceding modes to unlock",

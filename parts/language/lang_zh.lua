@@ -794,6 +794,9 @@ return{
         ['progressReset']="RESET",
         ['alreadyAttempted_1']="[C1] 1x",
 
+        -- [C3]
+        ['noReplays_3']="[C3] X",
+
         -- [C8]
         ['alreadyAttempted_8']="[C8] 1x",
         ['unlock_S']="前一模式达到成绩S或以上即可解锁",

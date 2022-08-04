@@ -144,6 +144,7 @@ function scene.keyDown(key,isRep)
         end
     elseif key=='p'then
         if(GAME.result or GAME.replaying)and #PLAYERS==1 then
+            if CHALLENGE==3 then MES.new('info',text.cTexts.noReplays_3) return end
             resetGameData('r')
             PLAYERS[1]:startStreaming(GAME.rep)
             SCN.swapTo('game','none')
@@ -364,8 +365,8 @@ scene.widgetList={
         fShade=GC.DO{70,70,{'setCL',1,1,1,.4},{'draw',GC.DO{70,70,{'setCL',1,1,1,1},{'fRRPol',37,35,32,3,6},{'fRRPol',25,35,32,3,6}}}},
         hideF=function()return PLAYERS[1].frameRun<=180 end,
         },
-    WIDGET.newKey{name='replay',   x=865,y=165,w=200,h=40,font=25,code=pressKey'p',hideF=function()return not(GAME.result or GAME.replaying)or #PLAYERS>1 end},
-    WIDGET.newKey{name='save',     x=1075,y=165,w=200,h=40,font=25,code=pressKey'o',hideF=function()return not(GAME.result or GAME.replaying)or #PLAYERS>1 or GAME.saved end},
+    WIDGET.newKey{name='replay',   x=865,y=165,w=200,h=40,font=25,code=pressKey'p',hideF=function()return not(GAME.result or GAME.replaying)or #PLAYERS>1 or CHALLENGE==3 end},
+    WIDGET.newKey{name='save',     x=1075,y=165,w=200,h=40,font=25,code=pressKey'o',hideF=function()return not(GAME.result or GAME.replaying)or #PLAYERS>1 or GAME.saved or CHALLENGE==3 end},
 }
 
 return scene

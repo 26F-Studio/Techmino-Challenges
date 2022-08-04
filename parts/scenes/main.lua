@@ -124,6 +124,7 @@ function scene.keyDown(key,isRep)
         end
     elseif key==','then
         if _testButton(8)then
+            if CHALLENGE==3 then MES.new('info',text.cTexts.noReplays_3) return end
             SCN.go('replays')
         end
     elseif key=='2'then
