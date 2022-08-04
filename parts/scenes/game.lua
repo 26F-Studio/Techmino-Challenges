@@ -114,6 +114,7 @@ local function _step()trigGameRate=trigGameRate+1 end
 
 local function _restart()
     if CHALLENGE==1 or CHALLENGE==8 or CHALLENGE==9 then return end
+    if CHALLENGE==6 and (SETTING.sfx_spawn<=0 or SETTING.mainVol<=0) then MES.new('warn',text.switchSpawnSFX) end
     resetGameData(PLAYERS[1].frameRun<240 and'q')
     noKey=replaying
     noTouch=replaying
@@ -147,6 +148,7 @@ function scene.sceneInit()
 
     if SCN.prev~='depause'and SCN.prev~='pause'then
         trigGameRate,gameRate=0,1
+        if CHALLENGE==6 and (SETTING.sfx_spawn<=0 or SETTING.mainVol<=0) then MES.new('warn',text.switchSpawnSFX) end
     elseif not replaying then
         if GAME.tasUsed then
             trigGameRate,gameRate=0,0

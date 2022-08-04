@@ -139,6 +139,7 @@ function scene.keyDown(key,isRep)
         end
     elseif key=='r'then
         if not (GAME.fromRepMenu or CHALLENGE==1 or CHALLENGE==8 or CHALLENGE==9) then
+            if CHALLENGE==6 and (SETTING.sfx_spawn<=0 or SETTING.mainVol<=0) then MES.new('warn',text.switchSpawnSFX) end
             resetGameData()
             SCN.swapTo('game','none')
         end

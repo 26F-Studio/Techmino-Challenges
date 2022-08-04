@@ -56,7 +56,7 @@ return{
     },
     load=function()
         PLY.newPlayer(1)
-        if SETTING.sfx_spawn==0 then
+        if SETTING.sfx_spawn==0 and not CHALLENGE==6 then
             MES.new('warn',text.switchSpawnSFX)
         end
     end,

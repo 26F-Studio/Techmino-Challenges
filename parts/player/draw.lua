@@ -459,7 +459,7 @@ local function _drawLDI(easyFresh,length,freshTime)--Lock Delay Indicator
         gc_draw(LDmarks)
     end
 end
-local function _drawHold(holdQueue,holdCount,holdTime,skinLib)
+local function _drawHold(holdQueue,holdCount,holdTime,skinLib,repMode)
     local N=holdCount*72
     gc_push('transform')
         gc_translate(12,20)
@@ -471,6 +471,7 @@ local function _drawHold(holdQueue,holdCount,holdTime,skinLib)
             gc_translate(50,40)
             gc_setLineWidth(8)
             gc_setColor(1,1,1)
+            if CHALLENGE==6 and not repMode then goto skip_draw_blocks end
             gc_setShader(shader_blockSatur)
             for n=1,#holdQueue do
                 if n==N then gc_setColor(.7,.5,.5)end
@@ -486,6 +487,7 @@ local function _drawHold(holdQueue,holdCount,holdTime,skinLib)
                 gc_scale(1/k)
                 gc_translate(0,72)
             end
+            ::skip_draw_blocks::
             gc_setShader()
         gc_pop()
     gc_pop()
@@ -503,6 +505,7 @@ local function _drawNext(P,repMode)
         gc_setColor(.97,.97,.97)
         if ENV.holdMode=='swap'then gc_rectangle('fill',1,72*ENV.holdCount+4,50,4)end
         gc_rectangle('line',0,0,100,h+8,5)
+        if CHALLENGE==6 and not repMode then gc_translate(-488,-20) return end
         gc_push('transform')
             gc_translate(50,40)
 
@@ -726,7 +729,7 @@ function draw.norm(P,repMode)
 
         --Draw HUD
         if ENV.nextCount>0 then _drawNext(P,repMode)end
-        if ENV.holdMode=='hold'and ENV.holdCount>0 and not (CHALLENGE==2 and not P.bot) then _drawHold(P.holdQueue,ENV.holdCount,P.holdTime,P.skinLib)end
+        if ENV.holdMode=='hold'and ENV.holdCount>0 and not (CHALLENGE==2 and not P.bot) then _drawHold(P.holdQueue,ENV.holdCount,P.holdTime,P.skinLib,GAME.replaying)end
         if P.curMission then _drawMission(P.curMission,ENV.mission,ENV.missionKill)end
         _drawDial(499,505,P.dropSpeed)
         if P.life>0 then _drawLife(P.life)end

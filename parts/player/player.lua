@@ -2353,6 +2353,10 @@ local function update_alive(P,dt)
     local ENV=P.gameEnv
 
     if CHALLENGE==5 and not P.bot then ENV.fillClear=false end
+    if CHALLENGE==6 and not P.bot then 
+        ENV.block=false
+        ENV.ghost=false
+    end
 
     P.frameRun=P.frameRun+1
     if P.frameRun<=180 then
