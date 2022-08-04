@@ -241,7 +241,7 @@ if
         pcall(TABLE.cover, loadFile('conf/virtualkey','-json -canSkip')or loadFile('conf/virtualkey','-luaon -canSkip')or{},VK_ORG)
     )
 then
-    MES.new('error',"Be careful, an error accured when loading saving, some data was lost")
+    MES.new('error',"An error occured when loading the savefile and some data was lost.")
 end
 
 --Initialize fields, sequence, missions, gameEnv for cutsom game

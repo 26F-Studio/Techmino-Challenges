@@ -1361,6 +1361,7 @@ function Player:hold_swap(ifpre)
     self.stat.hold=self.stat.hold+1
 end
 function Player:hold(ifpre,force)
+    if CHALLENGES==2 and not self.bot then return true end
     if self.holdTime>0 and(self.cur or ifpre or force)then
         if self.gameEnv.holdMode=='hold'then
             self:hold_norm(ifpre)
