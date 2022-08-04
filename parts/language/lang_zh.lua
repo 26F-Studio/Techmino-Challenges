@@ -775,6 +775,12 @@ return{
         {"C11", "description", "detailed description"},
     },
     challengeApplied="C$1",
+    cTexts={
+        -- challenge-specific texts
+        ['resetRun']="RESET",
+        ['unlock_S']="前一模式达到成绩S或以上即可解锁",
+        ['unlock_U']="前一模式达到成绩U或以上即可解锁",
+    },
     modes={
         ['sprint_10l']=     {"竞速",        "10L",      "消除10行"},
         ['sprint_20l']=     {"竞速",        "20L",      "消除20行"},

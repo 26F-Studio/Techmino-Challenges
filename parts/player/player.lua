@@ -1361,7 +1361,7 @@ function Player:hold_swap(ifpre)
     self.stat.hold=self.stat.hold+1
 end
 function Player:hold(ifpre,force)
-    if CHALLENGES==2 and not self.bot then return true end
+    if CHALLENGE==2 and not self.bot then return true end
     if self.holdTime>0 and(self.cur or ifpre or force)then
         if self.gameEnv.holdMode=='hold'then
             self:hold_norm(ifpre)
@@ -1406,7 +1406,7 @@ function Player:popNext(ifhold)--Pop nextQueue to hand
         local pressing=self.keyPressing
 
         --IHS
-        if not ifhold and pressing[8]and ENV.ihs and self.holdTime>0 then
+        if not ifhold and pressing[8]and ENV.ihs and self.holdTime>0 and not (CHALLENGE==2 and not self.bot) then
             self:hold(true)
             pressing[8]=false
         else
