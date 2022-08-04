@@ -151,6 +151,7 @@ function scene.keyDown(key,isRep)
         end
     elseif key=='o'then
         if(GAME.result or GAME.replaying)and #PLAYERS==1 and not GAME.saved then
+            if CHALLENGE==3 then MES.new('info',text.cTexts.noReplays_3) return end
             if DATA.saveReplay()then
                 GAME.saved=true
                 SFX.play('connected')
