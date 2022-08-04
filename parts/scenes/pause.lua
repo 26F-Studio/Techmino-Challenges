@@ -138,7 +138,7 @@ function scene.keyDown(key,isRep)
             SCN.go('setting_sound')
         end
     elseif key=='r'then
-        if not (GAME.fromRepMenu and (CHALLENGE==1 or CHALLENGE==8 or CHALLENGE==9)) then
+        if not (GAME.fromRepMenu or CHALLENGE==1 or CHALLENGE==8 or CHALLENGE==9) then
             resetGameData()
             SCN.swapTo('game','none')
         end
@@ -350,7 +350,7 @@ end
 
 scene.widgetList={
     WIDGET.newKey{name='resume',   x=290,y=240,w=300,h=70,code=pressKey'escape'},
-    WIDGET.newKey{name='restart',  x=290,y=340,w=300,h=70,code=pressKey'r',hideF=function()return GAME.fromRepMenu end},
+    WIDGET.newKey{name='restart',  x=290,y=340,w=300,h=70,code=pressKey'r',hideF=function()return GAME.fromRepMenu or CHALLENGE==1 or CHALLENGE==8 or CHALLENGE==9 end},
     WIDGET.newKey{name='setting',  x=290,y=440,w=300,h=70,code=pressKey's',hideF=function()return GAME.fromRepMenu end},
     WIDGET.newKey{name='quit',     x=290,y=540,w=300,h=70,code=pressKey'q'},
     WIDGET.newKey{name='tas',      x=290,y=620,w=240,h=50,code=pressKey't',hideF=function()return not SETTING.allowTAS or GAME.tasUsed or GAME.result or GAME.replaying end},
