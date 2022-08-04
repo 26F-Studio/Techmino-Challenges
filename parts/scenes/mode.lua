@@ -137,11 +137,17 @@ function scene.keyDown(key,isRep)
     if key=='return'then
         if mapCam.sel then
             if visibleModes[mapCam.sel]==2 then
-                MES.new('info',text.unlockHint)
+                if CHALLENGE==8 then MES.new('info',text.cTexts.unlock_S)
+                elseif CHALLENGE==9 then MES.new('info',text.cTexts.unlock_U)
+                else MES.new('info',text.unlockHint) end
             elseif RANKS[mapCam.sel]~=0 and (CHALLENGE==1 or CHALLENGE==8 or CHALLENGE==9) then
                 MES.new('info',text.cTexts['alreadyAttempted_'..CHALLENGE])
             else
                 mapCam.keyCtrl=false
+                if CHALLENGE==1 or CHALLENGE==8 or CHALLENGE==9 then 
+                    RANKS[mapCam.sel]=-1
+                    saveProgress()
+                end
                 loadGame(mapCam.sel)
             end
         end

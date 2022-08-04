@@ -140,7 +140,6 @@ function scene.sceneInit()
         resetGameData()
         GAME.init=false
     end
-
     replaying=GAME.replaying
     noKey=replaying
     noTouch=not SETTING.VKSwitch or replaying

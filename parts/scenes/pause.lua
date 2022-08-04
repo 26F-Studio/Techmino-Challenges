@@ -18,6 +18,7 @@ local trophy--Current trophy
 local trophyColor--Current trophy color
 
 function scene.sceneInit()
+    GAME.rank=GAME.rank>0 and GAME.rank or -1
     page=0
     if SCN.prev:find("setting")then
         TEXT.show(text.needRestart,640,410,50,'fly',.6)
@@ -123,6 +124,8 @@ end
 function scene.keyDown(key,isRep)
     if isRep then return true end
     if key=='q'then
+        RANKS[GAME.curMode.name]=GAME.rank
+        saveProgress()
         SCN.back()
         GAME.playing=false
     elseif key=='escape'then
@@ -133,7 +136,7 @@ function scene.keyDown(key,isRep)
             SCN.go('setting_sound')
         end
     elseif key=='r'then
-        if not GAME.fromRepMenu then
+        if not (GAME.fromRepMenu and (CHALLENGE==1 or CHALLENGE==8 or CHALLENGE==9)) then
             resetGameData()
             SCN.swapTo('game','none')
         end
