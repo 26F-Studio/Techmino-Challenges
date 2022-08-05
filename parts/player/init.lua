@@ -204,6 +204,7 @@ local function _loadGameEnv(P)--Load gameEnv
             M.func(P,M.list and M.list[M.sel])
         end
     end
+    if CHALLENGE==11 or CHALLENGE==12 then ENV.sequence='drought_l' end
 end
 local function _loadRemoteEnv(P,confStr)--Load gameEnv
     confStr=JSON.decode(confStr)
@@ -276,7 +277,7 @@ local function _applyGameEnv(P)--Finish gameEnv processing
             MES.new('warn',"Wrong event set type: "..type(ENV.eventSet))
         end
     end
-
+    if CHALLENGE==11 or CHALLENGE==12 then ENV.nextCount=math.min(1,ENV.nextCount) end
     P._20G=ENV.drop==0
     P.dropDelay=ENV.drop
     P.lockDelay=ENV.lock

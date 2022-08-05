@@ -1369,7 +1369,7 @@ function Player:hold_swap(ifpre)
     self.stat.hold=self.stat.hold+1
 end
 function Player:hold(ifpre,force)
-    if CHALLENGE==2 and not self.bot then return true end
+    if (CHALLENGE==2 or CHALLENGE==12) and not self.bot then return true end
     if self.holdTime>0 and(self.cur or ifpre or force)then
         if self.gameEnv.holdMode=='hold'then
             self:hold_norm(ifpre)
@@ -1414,7 +1414,7 @@ function Player:popNext(ifhold)--Pop nextQueue to hand
         local pressing=self.keyPressing
 
         --IHS
-        if not ifhold and pressing[8]and ENV.ihs and self.holdTime>0 and not (CHALLENGE==2 and not self.bot) then
+        if not ifhold and pressing[8]and ENV.ihs and self.holdTime>0 and not ((CHALLENGE==2 or CHALLENGE==12) and not self.bot) then
             self:hold(true)
             pressing[8]=false
         else
@@ -2387,6 +2387,11 @@ local function update_alive(P,dt)
 
     if P.timing then 
         P.stat.frame=P.stat.frame+1
+
+        if CHALLENGE==11 or CHALLENGE==12 then
+            ENV.sequence='drought_l'
+            ENV.nextCount=math.min(1,ENV.nextCount)
+        end
 
         if CHALLENGE~=3 then goto post_chal3 end
         if not P.bot then

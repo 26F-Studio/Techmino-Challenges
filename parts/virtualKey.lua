@@ -230,7 +230,7 @@ function VK.draw()
     local holdImage=holdImages[skin]
     if SETTING.VKIcon then
         for i,B in next,keys do
-            if B.ava and not (CHALLENGE==2 and i==8) then
+            if B.ava and not ((CHALLENGE==2 or CHALLENGE==12) and i==8) then
                 local r=B.r
                 --Button outline
                 gc_setColor(1,1,1,a)

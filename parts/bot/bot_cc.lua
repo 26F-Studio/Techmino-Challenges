@@ -43,7 +43,7 @@ function bot_cc:revive()
     self.P:loadAI(self.data)
 end
 function bot_cc:pushNewNext(id)
-    self.ccBot:addNext(rem(self.bufferedNexts,1))
+    if self.bufferedNexts and #self.bufferedNexts>1 then self.ccBot:addNext(rem(self.bufferedNexts,1)) end
     ins(self.bufferedNexts,id)
 end
 function bot_cc:thread()

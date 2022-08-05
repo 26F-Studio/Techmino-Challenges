@@ -729,7 +729,7 @@ function draw.norm(P,repMode)
 
         --Draw HUD
         if ENV.nextCount>0 then _drawNext(P,repMode)end
-        if ENV.holdMode=='hold'and ENV.holdCount>0 and not (CHALLENGE==2 and not P.bot) then _drawHold(P.holdQueue,ENV.holdCount,P.holdTime,P.skinLib,GAME.replaying)end
+        if ENV.holdMode=='hold'and ENV.holdCount>0 and not ((CHALLENGE==2 or CHALLENGE==12) and not P.bot) then _drawHold(P.holdQueue,ENV.holdCount,P.holdTime,P.skinLib,GAME.replaying)end
         if P.curMission then _drawMission(P.curMission,ENV.mission,ENV.missionKill)end
         _drawDial(499,505,P.dropSpeed)
         if P.life>0 then _drawLife(P.life)end
