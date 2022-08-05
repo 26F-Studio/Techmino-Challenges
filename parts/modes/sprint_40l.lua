@@ -11,11 +11,23 @@ return{
         if P.stat.row<40 then return end
         local T=P.stat.time
         return
+        CHALLENGE==7 and
+        (
+            T<=17.333 and 5 or
+            T<=24.000 and 4 or
+            T<=35.066 and 3 or
+            T<=61.933 and 2 or
+            T<=122.00 and 1 or
+            0
+        )
+        or
+        (
             T<=26 and 5 or
             T<=36 and 4 or
             T<=52.6 and 3 or
             T<=92.9 and 2 or
             T<=183 and 1 or
             0
+        )
     end,
 }

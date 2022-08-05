@@ -11,18 +11,33 @@ return{
     comp=function(a,b)return a[1]>b[1]or a[1]==b[1]and a[2]<b[2]end,
     getRank=function(P)
         local L=P.modeData.maxCombo
-        if L==100 then
-            local T=P.stat.time
-            return
-            T<=40 and 5 or
-            T<=60 and 4 or
-            3
+        if CHALLENGE==7 then
+            if L==100 then
+                local T=P.stat.time
+                return
+                T<=26.666 and 5 or
+                T<=40.000 and 4 or
+                3
+            else
+                return
+                L>=60 and 2 or
+                L>=30 and 1 or
+                L>=7 and 0
+            end
         else
-            return
-            L>=70 and 3 or
-            L>=40 and 2 or
-            L>=20 and 1 or
-            L>=5 and 0
+            if L==100 then
+                local T=P.stat.time
+                return
+                T<=40 and 5 or
+                T<=60 and 4 or
+                3
+            else
+                return
+                L>=70 and 3 or
+                L>=40 and 2 or
+                L>=20 and 1 or
+                L>=5 and 0
+            end
         end
     end,
 }

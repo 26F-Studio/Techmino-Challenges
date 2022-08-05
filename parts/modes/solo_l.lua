@@ -14,11 +14,25 @@ return{
     comp=function(a,b)return a[1]<b[1]end,
     getRank=function(P)
         if P.result=='win'then
-            local L=P.life
+            local L,T=P.life,P.stat.time
             return
-            L>=2 and 5 or
-            L>=1 and 4 or
-            3
+            CHALLENGE==7 and
+            (
+                L>=2 and
+                (
+                    T<=50 and 5 or
+                    T<=80 and 4 or
+                    3
+                ) or
+                L>=1 and 2 or
+                1
+            )
+            or
+            (
+                L>=2 and 5 or
+                L>=1 and 4 or
+                3
+            )
         end
     end,
 }

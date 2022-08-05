@@ -13,11 +13,22 @@ return{
     getRank=function(P)
         local L=P.stat.row
         return
-        L>=200 and 5 or
-        L>=140 and 4 or
-        L>=100 and 3 or
-        L>=60 and 2 or
-        L>=30 and 1 or
-        L>=10 and 0
+        CHALLENGE==7 and
+        (
+            L>=200 and 5 or
+            L>=150 and 3 or
+            L>=90 and 2 or
+            L>=45 and 1 or
+            L>=15 and 0
+        )
+        or
+        (
+            L>=200 and 5 or
+            L>=140 and 4 or
+            L>=100 and 3 or
+            L>=60 and 2 or
+            L>=30 and 1 or
+            L>=10 and 0
+        )
     end,
 }

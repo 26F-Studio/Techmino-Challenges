@@ -28,12 +28,14 @@ return{
         local A=P.stat.atk
         if A>=100 then
             local T=P.stat.time
+            if CHALLENGE==7 then T=T*1.5 end
             return
             T<50 and 5 or
             T<70 and 4 or
             T<100 and 3 or
             2
         else
+            if CHALLENGE==7 then A=A/1.5 end
             return
             A>=60 and 1 or
             A>=30 and 0

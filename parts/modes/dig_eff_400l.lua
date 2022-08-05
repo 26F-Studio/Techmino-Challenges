@@ -11,11 +11,23 @@ return{
         if P.stat.dig<400 then return end
         local P=P.stat.piece
         return
-        P<=1200 and 5 or
-        P<=1400 and 4 or
-        P<=1500 and 3 or
-        P<=1800 and 2 or
-        P<=2000 and 1 or
-        0
+        CHALLENGE==7 and
+        (
+            P<=800 and 5 or
+            P<=933 and 4 or
+            P<=1000 and 3 or
+            P<=1200 and 2 or
+            P<=1333 and 1 or
+            0
+        )
+        or
+        (
+            P<=1200 and 5 or
+            P<=1400 and 4 or
+            P<=1500 and 3 or
+            P<=1800 and 2 or
+            P<=2000 and 1 or
+            0
+        )
     end,
 }

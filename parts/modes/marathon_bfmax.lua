@@ -8,17 +8,31 @@ return{
     slowMark=true,
     getRank=function(P)
         local L=P.stat.row
-        if L>=200 then
-            local T=P.stat.time
-            return
-            T<=400 and 5 or
-            T<=600 and 4 or
-            3
+        if CHALLENGE==7 then
+            if L>=200 then
+                local T=P.stat.time
+                return
+                T<=266.66 and 5 or
+                T<=400.00 and 4 or
+                3
+            else
+                return
+                L>=120 and 1 or
+                L>=30 and 0
+            end
         else
-            return
-            L>=150 and 2 or
-            L>=80 and 1 or
-            L>=20 and 0
+            if L>=200 then
+                local T=P.stat.time
+                return
+                T<=400 and 5 or
+                T<=600 and 4 or
+                3
+            else
+                return
+                L>=150 and 2 or
+                L>=80 and 1 or
+                L>=20 and 0
+            end
         end
     end,
 }

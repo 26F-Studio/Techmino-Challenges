@@ -11,11 +11,23 @@ return{
         if P.stat.dig<100 then return end
         local T=P.stat.time
         return
-        T<=120 and 5 or
-        T<=160 and 4 or
-        T<=240 and 3 or
-        T<=360 and 2 or
-        T<=480 and 1 or
-        0
+        CHALLENGE==7 and
+        (
+            T<=80.000 and 5 or
+            T<=106.66 and 4 or
+            T<=160.00 and 3 or
+            T<=240.00 and 2 or
+            T<=320.00 and 1 or
+            0
+        )
+        or
+        (
+            T<=120 and 5 or
+            T<=160 and 4 or
+            T<=240 and 3 or
+            T<=360 and 2 or
+            T<=480 and 1 or
+            0
+        )
     end,
 }

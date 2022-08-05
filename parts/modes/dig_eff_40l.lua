@@ -11,11 +11,23 @@ return{
         if P.stat.dig<40 then return end
         local P=P.stat.piece
         return
-        P<=80 and 5 or
-        P<=100 and 4 or
-        P<=120 and 3 or
-        P<=160 and 2 or
-        P<=220 and 1 or
-        0
+        CHALLENGE==7 and
+        (
+            P<=53 and 5 or
+            P<=66 and 4 or
+            P<=80 and 3 or
+            P<=106 and 2 or
+            P<=146 and 1 or
+            0
+        )
+        or
+        (
+            P<=80 and 5 or
+            P<=100 and 4 or
+            P<=120 and 3 or
+            P<=160 and 2 or
+            P<=220 and 1 or
+            0
+        )
     end,
 }

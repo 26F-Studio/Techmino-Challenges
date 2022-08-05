@@ -34,11 +34,23 @@ return{
     getRank=function(P)
         local G=P.modeData.rankPts
         return
-        G>=23 and 5 or
-        G>=21 and 4 or
-        G>=19 and 3 or
-        G>=15 and 2 or
-        G>=11 and 1 or
-        G>=7 and 0
+        CHALLENGE==7 and
+        (
+            G>=26 and 5 or -- TM+4
+            G>=25 and 4 or -- TM+3
+            G>=24 and 3 or -- TM+2
+            G>=23 and 2 or -- TM+
+            G>=21 and 1 or -- GM+
+            G>=18 and 0 -- S8
+        )
+        or
+        (
+            G>=23 and 5 or
+            G>=21 and 4 or
+            G>=19 and 3 or
+            G>=15 and 2 or
+            G>=11 and 1 or
+            G>=7 and 0
+        )
     end,
 }

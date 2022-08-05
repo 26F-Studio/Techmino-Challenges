@@ -16,11 +16,22 @@ return{
         if P.result=='win'then
             local T=P.stat.time
             return
-            T<=50 and 5 or
-            T<=80 and 4 or
-            T<=120 and 3 or
-            T<=180 and 2 or
-            1
+            CHALLENGE==7 and
+            (
+                T<=33.333 and 5 or
+                T<=53.333 and 4 or
+                T<=80.000 and 3 or
+                T<=120.00 and 2 or
+                1
+            )
+            or
+            (
+                T<=50 and 5 or
+                T<=80 and 4 or
+                T<=120 and 3 or
+                T<=180 and 2 or
+                1
+            )
         end
     end,
 }

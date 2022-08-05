@@ -13,6 +13,7 @@ return{
     comp=function(a,b)return a[1]>b[1]end,
     getRank=function(P)
         local T=P.stat.score
+        if CHALLENGE==7 then T=T/1.5 end
         return
         T>=62000 and 5 or
         T>=50000 and 4 or

@@ -18,17 +18,32 @@ return{
     comp=function(a,b)return a[1]>b[1]or a[1]==b[1]and a[2]<b[2]end,
     getRank=function(P)
         local L=P.stat.atk
-        if L>=100 then
-            local T=P.stat.time
-            return
-            T<55 and 5 or
-            T<70 and 4 or
-            T<110 and 3 or
-            T<150 and 2 or
-            1
+        if CHALLENGE==7 then
+            if L>=100 then
+                local T=P.stat.time
+                return
+                T<36.666 and 5 or
+                T<46.666 and 4 or
+                T<73.333 and 3 or
+                T<100.00 and 2 or
+                1
+            else
+                return
+                L>=75 and 0
+            end
         else
-            return
-            L>=50 and 0
+            if L>=100 then
+                local T=P.stat.time
+                return
+                T<55 and 5 or
+                T<70 and 4 or
+                T<110 and 3 or
+                T<150 and 2 or
+                1
+            else
+                return
+                L>=50 and 0
+            end
         end
     end,
 }

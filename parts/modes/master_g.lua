@@ -20,12 +20,24 @@ return{
     getRank=function(P)
         local G=P.modeData.gradePts
         return
-            G>=40 and 5 or -- TM+
-            G>=32 and 4 or -- MM- - TM
-            G>=26 and 3 or -- m8 - MO
-            G>=19 and 2 or -- m1 - m7
-            G>=10 and 1 or  -- S1 - S9
-            0
+            CHALLENGE==7 and
+            (
+                G>=40 and 5 or -- TM+
+                G>=35 and 4 or -- GM- - TM
+                G>=32 and 3 or -- MM- - MM+
+                G>=26 and 2 or -- m8  - MO
+                G>=20 and 1 or -- m2  - m7
+                0
+            )
+            or
+            (
+                G>=40 and 5 or -- TM+
+                G>=32 and 4 or -- MM- - TM
+                G>=26 and 3 or -- m8 - MO
+                G>=19 and 2 or -- m1 - m7
+                G>=10 and 1 or -- S1 - S9
+                0
+            )
 
             -- Table of grades vs values
             -- 9 8 7 6 5 4 3 2 1 S1 S2 S3 S4 S5 S6 S7 S8 S9 m1 m2 m3 m4 m5 m6 m7 m8 m9  M MK MV MO MM- MM MM+ GM- GM GM+ TM- TM TM+

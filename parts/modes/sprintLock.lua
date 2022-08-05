@@ -7,6 +7,7 @@ return{
     },
     getRank=function(P)
         local L=P.stat.row
+        if CHALLENGE==7 then L=L/1.5 end
         return
         L>=40 and 5 or
         L>=32 and 4 or

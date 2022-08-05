@@ -772,7 +772,7 @@ return{
         {"Challenge 4",  "Hypertap Hell",          "DAS.exe has stopped working."},
         {"Challenge 5",  "Planned Top-outs",       "You have to top out to clear filled lines."},
         {"Challenge 6",  "The Audial Experience",  "You have to hear the active piece."},
-        {"Challenge 7",  "[WIP] Hard Mode",        "Rank requirements are 1.5× harder."},
+        {"Challenge 7",  "Hard Mode",              "Rank requirements are 1.5× harder."},
         {"Challenge 8",  "[WIP] One Try+",         "Challenge 1, but you have to get "..CHAR.icon.rankS.." rank or above to unlock modes."},
         {"Challenge 9",  "[WIP] One Try++",        "Challenge 1, but you have to get "..CHAR.icon.rankU.." rank or above to unlock modes."},
         {"Challenge 10", "[WIP] Pentomino Pain",   "Stack with pentominoes."},

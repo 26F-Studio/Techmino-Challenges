@@ -12,11 +12,22 @@ return{
     getRank=function(P)
         P=P.modeData.rankPoint
         return
-            P==140 and 5 or
-            P>=110 and 4 or
-            P>=80 and 3 or
-            P>=50 and 2 or
-            P>=30 and 1 or
-            P>=10 and 0
+            CHALLENGE==7 and
+            (
+                P==140 and 5 or
+                P>=120 and 3 or
+                P>=75 and 2 or
+                P>=45 and 1 or
+                P>=20 and 0
+            )
+            or
+            (
+                P==140 and 5 or
+                P>=110 and 4 or
+                P>=80 and 3 or
+                P>=50 and 2 or
+                P>=30 and 1 or
+                P>=10 and 0
+            )
     end,
 }

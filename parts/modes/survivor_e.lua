@@ -10,6 +10,9 @@ return{
     comp=function(a,b)return a[1]>b[1]or a[1]==b[1]and a[2]<b[2]end,
     getRank=function(P)
         local W=P.modeData.wave
+        if CHALLENGE==7 then
+            W=(W==100) and W or W/1.5
+        end
         return
         W>=100 and 5 or
         W>=60 and 4 or
