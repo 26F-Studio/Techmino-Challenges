@@ -546,7 +546,8 @@ function gameOver()--Save record
                         RANKS[M.name]=R
                         needSave=true
                     end
-                    if R>0 then
+                    local rankReq=CHALLENGE==9 and 4 or CHALLENGE==8 and 3 or 1
+                    if R>=rankReq then
                         if M.unlock then
                             for i=1,#M.unlock do
                                 local m=M.unlock[i]
