@@ -6,6 +6,7 @@ local verName=("%s  %s  %s"):format(SYSTEM,VERSION.string,VERSION.name)
 local tipLength=760
 local tip=gc.newText(getFont(30),"")
 local scrollX--Tip scroll position
+local visibleModes
 
 local widgetX0={
     -10,-10,-10,-10,
@@ -43,6 +44,18 @@ end)
 function scene.sceneInit()
     BG.set()
 
+    visibleModes={}--1=unlocked, 2=locked but visible
+    for name,M in next,MODES do
+        if RANKS[name]and M.x then
+            visibleModes[name]=1
+            if M.unlock then
+                for i=1,#M.unlock do
+                    visibleModes[M.unlock[i]]=visibleModes[M.unlock[i]]or 2
+                end
+            end
+        end
+    end
+
     --Set tip
     tip:set(text.getTip())
     scrollX=tipLength
@@ -59,6 +72,7 @@ function scene.sceneInit()
 end
 
 function scene.resize()
+    if not visibleModes[STAT.lastPlay] then STAT.lastPlay='sprint_10l' end
     local qpModeName=text.modes[STAT.lastPlay]and text.modes[STAT.lastPlay][1]or"["..STAT.lastPlay.."]"
     scene.widgetList[2]:setObject((CHALLENGE==1 or CHALLENGE==8 or CHALLENGE==9) and text.WidgetText.main.reset or text.WidgetText.main.qplay..qpModeName)
     scene.widgetList[3]:setObject(CHALLENGE~=0 and text.WidgetText.main.chal or text.WidgetText.main.online)

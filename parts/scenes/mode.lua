@@ -25,14 +25,19 @@ local mapCam={
 }
 local visibleModes
 local touchDist
+local totalGrade
+local maxGrade
 
 local scene={}
 
 function scene.sceneInit()
+    totalGrade,maxGrade=0,0
     BG.set()
     mapCam.zoomK=SCN.prev=='main'and 5 or 1
     visibleModes={}--1=unlocked, 2=locked but visible
     for name,M in next,MODES do
+        maxGrade=maxGrade+(M.getRank and 5 or 0)
+        totalGrade=(RANKS[name] and RANKS[name]>0) and totalGrade+RANKS[name] or totalGrade
         if RANKS[name]and M.x then
             visibleModes[name]=1
             if M.unlock then
@@ -229,6 +234,35 @@ local function _drawModeShape(M,S,drawType)
     end
 end
 function scene.draw()
+    if CHALLENGE~=0 then
+        setFont(50)
+        local percentage=string.format("%.1f", 100*totalGrade/maxGrade).."%, "
+        local rank=math.min(math.floor(8*totalGrade/maxGrade)+1,8)
+        local colors={
+            {.7,.7,.7},    --F [0.00% - 12.5%]
+            {.63,.52,.65}, --D [12.5% - 25.0%]
+            {.45,.24,.56}, --C [25.0% - 37.5%]
+            {.2,.4,.6},    --B [37.5% - 50.0%]
+            {.6,.85,.65},  --A [50.0% - 62.5%]
+            {.85,.8,.3},   --S [62.5% - 75.0%]
+            {.85,.5,.4},   --U [75.0% - 87.5%]
+            {.85,.3,.8}    --X [87.5% -  100%]
+        }
+        local letters={
+            CHAR.icon.rankF,
+            CHAR.icon.rankD,
+            CHAR.icon.rankC,
+            CHAR.icon.rankB,
+            CHAR.icon.rankA,
+            CHAR.icon.rankS,
+            CHAR.icon.rankU,
+            CHAR.icon.rankX
+        }
+        gc_setColor(colors[rank])
+        local text="[C"..CHALLENGE.."] "..totalGrade.."/"..maxGrade.." ("..percentage..letters[rank]..(totalGrade==maxGrade and "+" or "")..")"
+        mStr(text,360,20)
+    end
+    gc_setColor(1,1,1,1)
     local _
     gc_push('transform')
     gc_translate(640,360)
