@@ -2357,6 +2357,10 @@ local function update_alive(P,dt)
         ENV.block=false
         ENV.ghost=false
     end
+    if CHALLENGE==13 then
+        P.keyAvailable[4]=false
+        P.keyAvailable[5]=false
+    end
 
     P.frameRun=P.frameRun+1
     if P.frameRun<=180 then

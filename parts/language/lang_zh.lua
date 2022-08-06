@@ -778,6 +778,7 @@ return{
         {"C10", "description", "detailed description"},
         {"C11", "description", "detailed description"},
         {"C12", "description", "detailed description"},
+        {"C13", "description", "detailed description"},
     },
     challengeApplied="C$1",
     challengeUnapplied="--",

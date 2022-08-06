@@ -778,6 +778,7 @@ return{
         {"Challenge 10", "Pentomino Pain",   "Stack with pentominoes."},
         {"Challenge 11", "Unlucky",                "Drought+ randomizer."},
         {"Challenge 12", "Unlucky+",               "Challenge 11 combined with Challenge 2."},
+        {"Challenge 13", "Clockwise Only",         "[UNSPECIFIED COMPANY] entered the room."},
     },
     challengeApplied="Challenge $1 applied.",
     challengeUnapplied="No challenges applied.",
