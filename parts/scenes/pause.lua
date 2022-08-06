@@ -229,6 +229,15 @@ function scene.draw()
         mDraw(tasText,870,395,.3,2.6)
     end
 
+    if CHALLENGE~=0 then
+        setFont(25)
+        gc.setColor(.97,.97,.97,timer1*.06)
+        gc.rectangle('fill',555,631,620,36,8)
+        gc.setColor(.97,.97,.97,timer1)
+        gc.rectangle('line',555,631,620,36,8)
+        mStr(text.challenges[CHALLENGE][1],865,630)
+    end
+
     --Big info frame
     if PLAYERS[1].frameRun>=180 then
         gc.push('transform')
