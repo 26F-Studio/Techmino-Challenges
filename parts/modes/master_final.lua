@@ -11,7 +11,7 @@ return{
     getRank=function(P)
         local S=P.modeData.pt
         return
-        CHALLENGE==7 and
+        (CHALLENGE==7 or CHALLENGE==14) and
         (
             S>=1000 and 5 or
             S>=900 and 4 or

@@ -11,7 +11,7 @@ return{
         if P.stat.dig<400 then return end
         local T=P.stat.time
         return
-        CHALLENGE==7 and
+        (CHALLENGE==7 or CHALLENGE==14) and
         (
             T<=360 and 5 or
             T<=480 and 4 or

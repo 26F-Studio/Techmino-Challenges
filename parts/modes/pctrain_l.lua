@@ -14,7 +14,7 @@ return{
     getRank=function(P)
         local L=P.stat.pc
         return
-        CHALLENGE==7 and
+        (CHALLENGE==7 or CHALLENGE==14) and
         (
             L>=75 and 5 or
             L>=63 and 4 or

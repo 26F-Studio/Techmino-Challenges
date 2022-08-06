@@ -74,7 +74,7 @@ end
 function scene.resize()
     if not visibleModes[STAT.lastPlay] then STAT.lastPlay='sprint_10l' end
     local qpModeName=text.modes[STAT.lastPlay]and text.modes[STAT.lastPlay][1]or"["..STAT.lastPlay.."]"
-    scene.widgetList[2]:setObject((CHALLENGE==1 or CHALLENGE==8 or CHALLENGE==9) and text.WidgetText.main.reset or text.WidgetText.main.qplay..qpModeName)
+    scene.widgetList[2]:setObject((CHALLENGE==1 or CHALLENGE==8 or CHALLENGE==9 or CHALLENGE==14) and text.WidgetText.main.reset or text.WidgetText.main.qplay..qpModeName)
     scene.widgetList[3]:setObject(CHALLENGE~=0 and text.WidgetText.main.chal or text.WidgetText.main.online)
 end
 
@@ -103,7 +103,7 @@ function scene.keyDown(key,isRep)
         end
     elseif key=='q'then
         if _testButton(2)then
-            if CHALLENGE==1 or CHALLENGE==8 or CHALLENGE==9 then resetUnlocks() return end
+            if CHALLENGE==1 or CHALLENGE==8 or CHALLENGE==9 or CHALLENGE==14 then resetUnlocks() return end
             loadGame(STAT.lastPlay,true)
         end
     elseif key=='a'then
@@ -229,7 +229,7 @@ end
 
 scene.widgetList={
     WIDGET.newButton{name='offline',x=-1200,y=210,w=800,h=100,color='lR',font=45,align='R',edge=30,code=pressKey'1'},
-    WIDGET.newButton{name=(CHALLENGE==1 or CHALLENGE==8 or CHALLENGE==9) and 'reset' or 'qplay',  x=-1200,y=330,w=800,h=100,color='lM',font=40,align='R',edge=30,code=pressKey'q'},
+    WIDGET.newButton{name=(CHALLENGE==1 or CHALLENGE==8 or CHALLENGE==9 or CHALLENGE==14) and 'reset' or 'qplay',  x=-1200,y=330,w=800,h=100,color='lM',font=40,align='R',edge=30,code=pressKey'q'},
     WIDGET.newButton{name=CHALLENGE~=0 and 'chal' or 'online', x=-1200,y=450,w=800,h=100,color='lV',font=45,align='R',edge=30,code=pressKey'a'},
     WIDGET.newButton{name='custom', x=-1200,y=570,w=800,h=100,color='lS',font=45,align='R',edge=30,code=pressKey'z'},
 

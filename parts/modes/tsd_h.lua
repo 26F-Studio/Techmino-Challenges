@@ -12,7 +12,7 @@ return{
     getRank=function(P)
         local T=P.modeData.tsd
         return
-        CHALLENGE==7 and
+        (CHALLENGE==7 or CHALLENGE==14) and
         (
             T>=30 and 5 or
             T>=27 and 4 or

@@ -13,7 +13,7 @@ return{
     getRank=function(P)
         local W=P.modeData.wave
         return
-        CHALLENGE==7 and
+        (CHALLENGE==7 or CHALLENGE==14) and
         (
             W>=50 and 5 or
             W>=45 and 3 or

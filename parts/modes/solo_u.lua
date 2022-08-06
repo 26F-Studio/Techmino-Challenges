@@ -16,7 +16,7 @@ return{
         if P.result=='win'then
             local L=P.life
             return
-            CHALLENGE==7 and
+            (CHALLENGE==7 or CHALLENGE==14) and
             (
                 L>=2 and
                 (

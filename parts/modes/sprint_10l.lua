@@ -11,7 +11,7 @@ return{
         if P.stat.row<10 then return end
         local T=P.stat.time
         return
-        CHALLENGE==7 and
+        (CHALLENGE==7 or CHALLENGE==14) and
         (
             T<=4.6666 and 5 or
             T<=6.6666 and 4 or

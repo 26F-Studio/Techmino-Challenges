@@ -10,7 +10,7 @@ return{
     getRank=function(P)
         if P.stat.row<40 then return end
         local E=P.stat.atk/P.stat.row
-        if CHALLENGE==7 then E=E/1.5 end
+        if (CHALLENGE==7 or CHALLENGE==14) then E=E/1.5 end
         return math.min(math.floor(E),5)
     end,
 }

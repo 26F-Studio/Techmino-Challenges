@@ -842,7 +842,7 @@ local commands={}do
                         end
                     end
                     if visibleModes[m]~=1 then log{C.R,"[CHALLENGE "..CHALLENGE.."] "..m.." is locked"} return
-                    elseif RANKS[m]~=0 and (CHALLENGE==1 or CHALLENGE==8 or CHALLENGE==9) then log{C.R,"[CHALLENGE "..CHALLENGE.."] "..m.." has already been attempted"} return
+                    elseif RANKS[m]~=0 and (CHALLENGE==1 or CHALLENGE==8 or CHALLENGE==9 or CHALLENGE==14) then log{C.R,"[CHALLENGE "..CHALLENGE.."] "..m.." has already been attempted"} return
                     end
                 end
                 loadGame(m,true)

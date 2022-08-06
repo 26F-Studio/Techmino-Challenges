@@ -7,7 +7,7 @@ return{
     getRank=function(P)
         if P.stat.row<40 then return end
         local T=P.stat.time
-        if CHALLENGE==7 then T=T*1.5 end
+        if (CHALLENGE==7 or CHALLENGE==14) then T=T*1.5 end
         return
             T<=30 and 5 or
             T<=42 and 5 or

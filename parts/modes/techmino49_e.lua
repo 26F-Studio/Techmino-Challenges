@@ -44,7 +44,7 @@ return{
     comp=function(a,b)return a[1]<b[1]or a[1]==b[1]and a[2]>b[2]end,
     getRank=function(P)
         local R=P.modeData.place
-        if CHALLENGE==7 and R>1 then return 0 end
+        if (CHALLENGE==7 or CHALLENGE==14) and R>1 then return 0 end
         return
         R==1 and 5 or
         R<=3 and 4 or

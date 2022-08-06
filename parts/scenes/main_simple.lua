@@ -16,7 +16,7 @@ function scene.draw()
 end
 
 local function _loadGame(mode)
-    if (CHALLENGE==1 or CHALLENGE==8 or CHALLENGE==9) and RANKS[mode]~=0 then
+    if (CHALLENGE==1 or CHALLENGE==8 or CHALLENGE==9 or CHALLENGE==14) and RANKS[mode]~=0 then
         MES.new('info',text.cTexts['alreadyAttempted_'..CHALLENGE])
         return
     end

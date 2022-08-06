@@ -779,6 +779,7 @@ return{
         {"C11", "description", "detailed description"},
         {"C12", "description", "detailed description"},
         {"C13", "description", "detailed description"},
+        {"C14", "description", "detailed description"},
     },
     challengeApplied="C$1",
     challengeUnapplied="--",
@@ -806,6 +807,9 @@ return{
         -- [C9]
         ['alreadyAttempted_9']="[C9] 1x",
         ['unlock_U']="前一模式达到成绩U或以上即可解锁",
+
+        -- [C14]
+        ['alreadyAttempted_9']="[C14] 1x",
     },
     modes={
         ['sprint_10l']=     {"竞速",        "10L",      "消除10行"},

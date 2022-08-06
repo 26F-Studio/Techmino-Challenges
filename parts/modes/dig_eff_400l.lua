@@ -11,7 +11,7 @@ return{
         if P.stat.dig<400 then return end
         local P=P.stat.piece
         return
-        CHALLENGE==7 and
+        (CHALLENGE==7 or CHALLENGE==14) and
         (
             P<=800 and 5 or
             P<=933 and 4 or

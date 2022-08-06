@@ -34,7 +34,7 @@ return{
     getRank=function(P)
         local G=P.modeData.rankPts
         return
-        CHALLENGE==7 and
+        (CHALLENGE==7 or CHALLENGE==14) and
         (
             G>=26 and 5 or -- TM+4
             G>=25 and 4 or -- TM+3

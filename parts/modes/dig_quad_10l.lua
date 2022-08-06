@@ -36,7 +36,7 @@ return{
     getRank=function(P)
         local dig = P.stat.dig_quad
         local piece = P.stat.piece
-        if CHALLENGE==7 then
+        if (CHALLENGE==7 or CHALLENGE==14) then
             if dig < 6 then return end
             return
             dig < 10 and 0 or

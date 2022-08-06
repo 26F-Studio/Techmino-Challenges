@@ -8,7 +8,7 @@ return{
     slowMark=true,
     getRank=function(P)
         local L=P.stat.row
-        if CHALLENGE==7 then
+        if (CHALLENGE==7 or CHALLENGE==14) then
             if L>=200 then
                 local T=P.stat.time
                 return

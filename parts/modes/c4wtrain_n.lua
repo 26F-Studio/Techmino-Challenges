@@ -11,7 +11,7 @@ return{
     comp=function(a,b)return a[1]>b[1]or a[1]==b[1]and a[2]<b[2]end,
     getRank=function(P)
         local L=P.stat.row
-        if CHALLENGE==7 then
+        if (CHALLENGE==7 or CHALLENGE==14) then
             if L==100 then
                 local T=P.stat.time
                 return

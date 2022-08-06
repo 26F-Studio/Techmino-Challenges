@@ -779,6 +779,7 @@ return{
         {"Challenge 11", "Unlucky",                "Drought+ randomizer."},
         {"Challenge 12", "Unlucky+",               "Challenge 11 combined with Challenge 2."},
         {"Challenge 13", "Clockwise Only",         "[UNSPECIFIED COMPANY] entered the room."},
+        {"Challenge 14", "Hardcore Mode",          "Challenge 1 and Challenge 7, combined."},
     },
     challengeApplied="Challenge $1 applied.",
     challengeUnapplied="No challenges applied.",
@@ -805,6 +806,9 @@ return{
         -- [C9]
         ['alreadyAttempted_9']="[C9] Mode already attempted",
         ['unlock_U']="Achieve Rank U or above in the preceding modes to unlock",
+
+        -- [C14]
+        ['alreadyAttempted_14']="[C14] Mode already attempted",
     },
     modes={
         ['sprint_10l']=     {"Sprint",            "10L",            "Clear 10 lines!"},
