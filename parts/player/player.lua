@@ -2392,6 +2392,9 @@ local function update_alive(P,dt)
             ENV.sequence='drought_l'
             ENV.nextCount=math.min(1,ENV.nextCount)
         end
+        if CHALLENGE==10 then
+            ENV.seqData={8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25}
+        end
 
         if CHALLENGE~=3 then goto post_chal3 end
         if not P.bot then

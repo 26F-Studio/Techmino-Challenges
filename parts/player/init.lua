@@ -329,7 +329,7 @@ local function _applyGameEnv(P)--Finish gameEnv processing
     end
 
     P.newNext=coroutine.wrap(getSeqGen(P))
-    P:newNext(P.gameEnv.seqData)
+    P:newNext((CHALLENGE==10 and not P.type=='computer') and {8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25} or P.gameEnv.seqData)
     if ENV.noInitSZO then
         for _=1,5 do
             local C=P.nextQueue[1]

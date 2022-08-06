@@ -775,7 +775,7 @@ return{
         {"Challenge 7",  "Hard Mode",              "Rank requirements are 1.5× harder."},
         {"Challenge 8",  "One Try+",               "Challenge 1, but you have to get "..CHAR.icon.rankS.." rank or above to unlock modes."},
         {"Challenge 9",  "One Try++",              "Challenge 1, but you have to get "..CHAR.icon.rankU.." rank or above to unlock modes."},
-        {"Challenge 10", "[WIP] Pentomino Pain",   "Stack with pentominoes."},
+        {"Challenge 10", "Pentomino Pain",   "Stack with pentominoes."},
         {"Challenge 11", "Unlucky",                "Drought+ randomizer."},
         {"Challenge 12", "Unlucky+",               "Challenge 11 combined with Challenge 2."},
     },

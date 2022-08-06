@@ -1,9 +1,11 @@
 local ins,rem=table.insert,table.remove
 local yield=YIELD
+local pentoSeq={8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25}
 
 local seqGenerators={
     none=function()while true do yield()end end,
     bag=function(P,seq0)
+        seq0=(CHALLENGE==10 and P.type~='computer') and pentoSeq or seq0
         local rndGen=P.seqRND
         local len=#seq0
         local bag={}
@@ -20,6 +22,7 @@ local seqGenerators={
         end
     end,
     bagES=function(P,seq0)
+        seq0=(CHALLENGE==10 and P.type~='computer') and pentoSeq or seq0
         local rndGen=P.seqRND
         local len=#seq0
         local bag=TABLE.shift(seq0)
@@ -56,6 +59,7 @@ local seqGenerators={
         end
     end,
     his=function(P,seq0)
+        seq0=(CHALLENGE==10 and P.type~='computer') and pentoSeq or seq0
         local rndGen=P.seqRND
         local len=#seq0
         local hisLen=math.ceil(len*.5)
@@ -83,6 +87,7 @@ local seqGenerators={
         end
     end,
     hisPool=function(P,seq0)
+        seq0=(CHALLENGE==10 and P.type~='computer') and pentoSeq or seq0
         local rndGen=P.seqRND
         local len=#seq0
         local hisLen=math.ceil(len*.5)
@@ -155,6 +160,7 @@ local seqGenerators={
         end
     end,
     c2=function(P,seq0)
+        seq0=(CHALLENGE==10 and P.type~='computer') and pentoSeq or seq0
         local rndGen=P.seqRND
         local len=#seq0
         local weight=TABLE.new(0,len)
@@ -175,6 +181,7 @@ local seqGenerators={
         end
     end,
     rnd=function(P,seq0)
+        seq0=(CHALLENGE==10 and P.type~='computer') and pentoSeq or seq0
         if #seq0==1 then
             local i=seq0[1]
             while true do
@@ -199,6 +206,7 @@ local seqGenerators={
         end
     end,
     mess=function(P,seq0)
+        seq0=(CHALLENGE==10 and P.type~='computer') and pentoSeq or seq0
         local rndGen=P.seqRND
         while true do
             while #P.nextQueue<10 do
@@ -208,6 +216,7 @@ local seqGenerators={
         end
     end,
     reverb=function(P,seq0)
+        seq0=(CHALLENGE==10 and P.type~='computer') and pentoSeq or seq0
         local rndGen=P.seqRND
         local bufferSeq,bag={},{}
         while true do
@@ -232,6 +241,7 @@ local seqGenerators={
         end
     end,
     loop=function(P,seq0)
+        seq0=(CHALLENGE==10 and P.type~='computer') and pentoSeq or seq0
         local len=#seq0
         local bag={}
         while true do
@@ -247,6 +257,7 @@ local seqGenerators={
         end
     end,
     fixed=function(P,seq0)
+        seq0=(CHALLENGE==10 and P.type~='computer') and pentoSeq or seq0
         local seq={}
         for i=#seq0,1,-1 do
             ins(seq,seq0[i])
