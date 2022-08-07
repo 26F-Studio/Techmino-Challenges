@@ -841,7 +841,7 @@ local commands={}do
                             end
                         end
                     end
-                    if visibleModes[m]~=1 then log{C.R,"[CHALLENGE "..CHALLENGE.."] "..m.." is locked"} return
+                    if visibleModes[m]~=1 and MODES[m].x then log{C.R,"[CHALLENGE "..CHALLENGE.."] "..m.." is locked"} return
                     elseif RANKS[m]~=0 and (CHALLENGE==1 or CHALLENGE==8 or CHALLENGE==9 or CHALLENGE==14) then log{C.R,"[CHALLENGE "..CHALLENGE.."] "..m.." has already been attempted"} return
                     end
                 end
@@ -857,6 +857,22 @@ local commands={}do
             "Load a game mode. This includes those that are not on the map.",
             "",
             "Usage: play [mode_name]",
+        },
+    }
+    commands.listsecretmodes={
+        code=function()
+            local exceptions={['custom_clear']=true,['custom_puzzle']=true,['netBattle']=true}
+            for name,M in next,MODES do
+                if not M.x and not exceptions[name]then
+                    log("["..name.."]"..(text.modes[name] and " "..text.modes[name][1].." "..text.modes[name][2] or ""))
+                end
+            end
+        end,
+        description="Lists secret/hidden modes.",
+        details={
+            "Displays a list of modes that are hidden from the map.",
+            "",
+            "Usage: listsecretmodes",
         },
     }
     commands.tas={
