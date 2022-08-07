@@ -271,7 +271,7 @@ function Player:act_rotLeft()
     if not self.control then return end
     if self.cur then
         self.ctrlCount=self.ctrlCount+1
-        self:spin(3)
+        self:spin(CHALLENGE==13 and 1 or 3)
         self.keyPressing[4]=false
     end
 end
@@ -279,7 +279,7 @@ function Player:act_rot180()
     if not self.control then return end
     if self.cur then
         self.ctrlCount=self.ctrlCount+2
-        self:spin(2)
+        self:spin(CHALLENGE==13 and 1 or 2)
         self.keyPressing[5]=false
     end
 end
@@ -2356,10 +2356,6 @@ local function update_alive(P,dt)
     if CHALLENGE==6 and not P.bot then 
         ENV.block=false
         ENV.ghost=false
-    end
-    if CHALLENGE==13 then
-        P.keyAvailable[4]=false
-        P.keyAvailable[5]=false
     end
 
     P.frameRun=P.frameRun+1

@@ -240,7 +240,7 @@ function VK.draw()
                 --Icon
                 local _=B.pressTime
                 gc_setColor(1,1,1,a)
-                gc_draw(VKIcon[i],B.x,B.y,nil,r*.01+_*.024,nil,45,45)
+                gc_draw(((CHALLENGE==13 and (i==4 or i==5)) and VKIcon[3] or VKIcon[i]),B.x,B.y,nil,r*.01+_*.024,nil,45,45)
 
                 --Ripple
                 if _>0 then
